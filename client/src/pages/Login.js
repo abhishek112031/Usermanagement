@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ const Login = () => {
   });
 
   const [message, setMessage] = useState("");
-  //   const navigate = useNavigate();
+    const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +31,7 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
       console.log(response.data);
 
-      //   navigate("/dashboard");
+        navigate("/home");
     } catch (error) {
       setMessage(error.response.data.message);
       //   console.error(error);
@@ -77,6 +77,9 @@ const Login = () => {
                 </button>
               </form>
               {message && <p className="mt-3">{message}</p>}
+              <div className="mt-3 text-center">
+                <p>Don't have an account? <Link to="/registration">Sign Up</Link></p>
+              </div>
             </div>
           </div>
         </div>
