@@ -1,18 +1,4 @@
-// import logo from "./logo.svg";
-// import "./App.css";
-// import Registration from "./pages/Registration";
-// import Login from "./pages/Login";
 
-// function App() {
-//   return (
-//     <div className="App">
-//       {/* <Registration /> */}
-//       <Login />
-//     </div>
-//   );
-// }
-
-// export default App;
 
 
 
@@ -21,6 +7,7 @@ import {  Route, Routes ,Navigate} from "react-router-dom";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Edit from "./pages/Edit";
 
 function App() {
   const token=localStorage.getItem("token");
@@ -32,7 +19,8 @@ function App() {
           <Route path="/registration" element={<Registration/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/home" element={token ? <Home/> : <Navigate to={"/login"}/>} />
-        </Routes>
+          <Route path="/edit/:id" element={token ? <Edit /> : <Navigate to={"/login"} />} />
+            </Routes>
       </div>
     // </BrowserRouter>
   );

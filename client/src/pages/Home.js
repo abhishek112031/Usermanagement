@@ -1,10 +1,11 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Home = () => {
   const [users, setUsers] = useState([]);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
     // Fetch users data from API
@@ -28,7 +29,7 @@ const Home = () => {
   }, [token]);
 
   const handleEdit = (userId) => {
-    console.log("Edit user with id:", userId);
+    navigate(`/edit/${userId}`); // Use navigate to redirect to edit page
   };
 
   const handleDelete = async (userId) => {
@@ -69,7 +70,7 @@ const Home = () => {
               <td>{user.phone}</td>
               <td>
                 <button
-                  className="btn btn-info mr-2"
+                  className="btn btn-info mr-3"
                   onClick={() => handleEdit(user._id)}
                 >
                   Edit
@@ -90,4 +91,3 @@ const Home = () => {
 };
 
 export default Home;
-

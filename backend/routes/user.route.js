@@ -16,11 +16,11 @@ router.post(
 );
 router.post("/login", userCallController.login);
 router.get("/all-users", authenticate, userCallController.getAllUsers);
-router.get("/user/:id", authenticate, userCallController.getSingleUser);
+router.get("/:id", authenticate, userCallController.getSingleUser);
 router.put(
   "/update/:id",
   authenticate,
-  validateUpdation,
+  // validateUpdation,
   userCallController.updateUser
 );
 router.delete("/delete-user/:id", authenticate, userCallController.deleteUser);
