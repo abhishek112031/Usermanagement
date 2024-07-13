@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -8,7 +9,6 @@ const Home = () => {
   useEffect(() => {
     // Fetch users data from API
     const fetchUsers = async () => {
-      //   const token = localStorage.getItem("token");
       try {
         const response = await axios.get(
           "http://localhost:8080/api/user/all-users",
@@ -25,7 +25,7 @@ const Home = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [token]);
 
   const handleEdit = (userId) => {
     console.log("Edit user with id:", userId);
@@ -33,8 +33,6 @@ const Home = () => {
 
   const handleDelete = async (userId) => {
     try {
-      //   const token = localStorage.getItem("accessToken");
-
       await axios.delete(
         `http://localhost:8080/api/user/delete-user/${userId}`,
         {
@@ -54,7 +52,7 @@ const Home = () => {
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">User List</h2>
-      <table className="table">
+      <table className="table table-striped">
         <thead className="thead-dark">
           <tr>
             <th>Name</th>
@@ -92,3 +90,4 @@ const Home = () => {
 };
 
 export default Home;
+

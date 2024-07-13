@@ -72,7 +72,7 @@ const Login = () => {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">
+                <button type="submit" className="btn btn-primary mt-2 btn-block">
                   Login
                 </button>
               </form>

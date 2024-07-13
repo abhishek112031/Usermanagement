@@ -1,6 +1,7 @@
+
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const Registration = () => {
     password: "",
     profession: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +32,7 @@ const Registration = () => {
       console.log("response data:  ", response.data);
 
       alert("Registration successful!");
+      navigate("/login");
     } catch (error) {
       console.error("There was an error registering!", error);
       alert(error.response.data.message);
@@ -40,13 +43,13 @@ const Registration = () => {
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <div className="card">
-            <div className="card-header">
+          <div className="card shadow-lg">
+            <div className="card-header bg-primary text-white">
               <h3 className="text-center">Registration</h3>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="form-group mb-3">
                   <label htmlFor="name">Name</label>
                   <input
                     type="text"
@@ -58,7 +61,7 @@ const Registration = () => {
                     required
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group mb-3">
                   <label htmlFor="email">Email</label>
                   <input
                     type="email"
@@ -70,7 +73,7 @@ const Registration = () => {
                     required
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group mb-3">
                   <label htmlFor="phone">Phone</label>
                   <input
                     type="string"
@@ -82,7 +85,7 @@ const Registration = () => {
                     required
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group mb-3">
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
@@ -94,7 +97,7 @@ const Registration = () => {
                     required
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group mb-3">
                   <label htmlFor="profession">Profession</label>
                   <input
                     type="text"
@@ -111,7 +114,12 @@ const Registration = () => {
                 </button>
               </form>
               <div className="mt-3 text-center">
-                <p>Already have an account? <Link to="/login">Login</Link></p>
+                <p>
+                  Already have an account?{" "}
+                  <Link to="/login" className="text-primary">
+                    Login
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
@@ -122,3 +130,4 @@ const Registration = () => {
 };
 
 export default Registration;
+
