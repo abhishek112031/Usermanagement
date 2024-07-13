@@ -72,6 +72,16 @@ exports.getAllUsers = async (req, res, next) => {
   }
 };
 
+exports.getSingleUser = async (req, res, next) => {
+  try {
+    const id=req.params.id
+    const user = await User.findOne({_id:id});
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
+
 // Update User
 exports.updateUser = async (req, res, next) => {
   const { id } = req.params;

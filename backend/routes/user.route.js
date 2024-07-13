@@ -16,6 +16,7 @@ router.post(
 );
 router.post("/login", userCallController.login);
 router.get("/all-users", authenticate, userCallController.getAllUsers);
+router.get("/user/:id", authenticate, userCallController.getSingleUser);
 router.put(
   "/update/:id",
   authenticate,
