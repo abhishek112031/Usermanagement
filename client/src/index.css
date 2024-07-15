@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  /* background-image: url('https://cdn.pixabay.com/photo/2024/06/12/12/40/architecture-8825211_640.jpg'); */
+
+  background:rgb(1, 1, 21);
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Ensure it covers the full viewport height */
 }
 
 code {

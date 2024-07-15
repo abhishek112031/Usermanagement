@@ -39,12 +39,14 @@ const Registration = () => {
     }
   };
 
+
+
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <div className="card shadow-lg">
-            <div className="card-header bg-primary text-white">
+          <div className="card shadow-lg bg-dark text-white">
+            <div className="card-header bg-secondary text-white">
               <h3 className="text-center">Registration</h3>
             </div>
             <div className="card-body">
@@ -53,7 +55,7 @@ const Registration = () => {
                   <label htmlFor="name">Name</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control bg-dark text-white"
                     id="name"
                     name="name"
                     value={formData.name}
@@ -65,7 +67,7 @@ const Registration = () => {
                   <label htmlFor="email">Email</label>
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control bg-dark text-white"
                     id="email"
                     name="email"
                     value={formData.email}
@@ -76,8 +78,8 @@ const Registration = () => {
                 <div className="form-group mb-3">
                   <label htmlFor="phone">Phone</label>
                   <input
-                    type="string"
-                    className="form-control"
+                    type="text"
+                    className="form-control bg-dark text-white"
                     id="phone"
                     name="phone"
                     value={formData.phone}
@@ -89,7 +91,7 @@ const Registration = () => {
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control bg-dark text-white"
                     id="password"
                     name="password"
                     value={formData.password}
@@ -101,7 +103,7 @@ const Registration = () => {
                   <label htmlFor="profession">Profession</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control bg-dark text-white"
                     id="profession"
                     name="profession"
                     value={formData.profession}
@@ -109,14 +111,14 @@ const Registration = () => {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">
+                <button type="submit" className="btn btn-secondary btn-block">
                   Register
                 </button>
               </form>
               <div className="mt-3 text-center">
                 <p>
                   Already have an account?{" "}
-                  <Link to="/login" className="text-primary">
+                  <Link to="/login" className="text-info">
                     Login
                   </Link>
                 </p>
@@ -126,7 +128,96 @@ const Registration = () => {
         </div>
       </div>
     </div>
-  );
+  )
+
+  // return (
+  //   <div className="container mt-5">
+  //     <div className="row justify-content-center">
+  //       <div className="col-md-6">
+  //         <div className="card shadow-lg">
+  //           <div className="card-header bg-primary text-white">
+  //             <h3 className="text-center">Registration</h3>
+  //           </div>
+  //           <div className="card-body">
+  //             <form onSubmit={handleSubmit}>
+  //               <div className="form-group mb-3">
+  //                 <label htmlFor="name">Name</label>
+  //                 <input
+  //                   type="text"
+  //                   className="form-control"
+  //                   id="name"
+  //                   name="name"
+  //                   value={formData.name}
+  //                   onChange={handleChange}
+  //                   required
+  //                 />
+  //               </div>
+  //               <div className="form-group mb-3">
+  //                 <label htmlFor="email">Email</label>
+  //                 <input
+  //                   type="email"
+  //                   className="form-control"
+  //                   id="email"
+  //                   name="email"
+  //                   value={formData.email}
+  //                   onChange={handleChange}
+  //                   required
+  //                 />
+  //               </div>
+  //               <div className="form-group mb-3">
+  //                 <label htmlFor="phone">Phone</label>
+  //                 <input
+  //                   type="string"
+  //                   className="form-control"
+  //                   id="phone"
+  //                   name="phone"
+  //                   value={formData.phone}
+  //                   onChange={handleChange}
+  //                   required
+  //                 />
+  //               </div>
+  //               <div className="form-group mb-3">
+  //                 <label htmlFor="password">Password</label>
+  //                 <input
+  //                   type="password"
+  //                   className="form-control"
+  //                   id="password"
+  //                   name="password"
+  //                   value={formData.password}
+  //                   onChange={handleChange}
+  //                   required
+  //                 />
+  //               </div>
+  //               <div className="form-group mb-3">
+  //                 <label htmlFor="profession">Profession</label>
+  //                 <input
+  //                   type="text"
+  //                   className="form-control"
+  //                   id="profession"
+  //                   name="profession"
+  //                   value={formData.profession}
+  //                   onChange={handleChange}
+  //                   required
+  //                 />
+  //               </div>
+  //               <button type="submit" className="btn btn-primary btn-block">
+  //                 Register
+  //               </button>
+  //             </form>
+  //             <div className="mt-3 text-center">
+  //               <p>
+  //                 Already have an account?{" "}
+  //                 <Link to="/login" className="text-primary">
+  //                   Login
+  //                 </Link>
+  //               </p>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default Registration;

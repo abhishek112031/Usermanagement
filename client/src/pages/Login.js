@@ -1,6 +1,7 @@
+
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,8 +9,8 @@ const Login = () => {
     password: "",
   });
 
-  const [message, setMessage] = useState("");
-    const navigate = useNavigate();
+  // const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,14 +28,23 @@ const Login = () => {
         "http://localhost:8080/api/user/login",
         formData
       );
-      setMessage(response.data.message);
-      localStorage.setItem("token", response.data.token);
-      console.log(response.data);
 
+      console.log("response: ", response.status);
+
+      if(response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        alert('Login successful!');
         navigate("/home");
+      }else{
+        alert('Login unsuccessful!');
+
+      }
+
+    
+      
     } catch (error) {
-      setMessage(error.response.data.message);
-      //   console.error(error);
+      alert(error.response.data.message);
+  
     }
   };
 
@@ -42,17 +52,17 @@ const Login = () => {
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <div className="card">
-            <div className="card-header">
-              <h3 className="text-center">Login</h3>
+          <div className="card bg-dark text-white">
+            <div className="card-header text-center">
+              <h3>Login</h3>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <input
-                    type="string"
-                    className="form-control"
+                    type="email"
+                    className="form-control bg-secondary text-white"
                     id="email"
                     name="email"
                     value={formData.email}
@@ -64,7 +74,7 @@ const Login = () => {
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control bg-secondary text-white"
                     id="password"
                     name="password"
                     value={formData.password}
@@ -72,13 +82,13 @@ const Login = () => {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary mt-2 btn-block">
+                <button type="submit" className="btn btn-primary mt-3 btn-block">
                   Login
                 </button>
               </form>
-              {message && <p className="mt-3">{message}</p>}
+              {/* {message && <p className="mt-3 text-center">{message}</p>} */}
               <div className="mt-3 text-center">
-                <p>Don't have an account? <Link to="/registration">Sign Up</Link></p>
+                <p>Don't have an account? <Link to="/registration" className="text-primary">Sign Up</Link></p>
               </div>
             </div>
           </div>
@@ -89,3 +99,4 @@ const Login = () => {
 };
 
 export default Login;
+

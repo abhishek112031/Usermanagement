@@ -50,15 +50,29 @@ const Home = () => {
     }
   };
 
+  const handleLogout=async ()=>{
+    localStorage.removeItem('token');
+
+    navigate('/login');
+
+  }
+
+
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">User List</h2>
-      <table className="table table-striped">
+      <div className="d-flex justify-content-end">
+        <button className="btn btn-danger mb-3" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+      <h2 className="text-center mb-4 text-white">User List</h2>
+      <table className="table table-dark table-striped">
         <thead className="thead-dark">
           <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Profession</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -68,9 +82,10 @@ const Home = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.phone}</td>
+              <td>{user.profession}</td>
               <td>
                 <button
-                  className="btn btn-info mr-3"
+                  className="btn btn-info mx-3"
                   onClick={() => handleEdit(user._id)}
                 >
                   Edit
@@ -88,6 +103,7 @@ const Home = () => {
       </table>
     </div>
   );
+
 };
 
 export default Home;
