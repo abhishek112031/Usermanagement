@@ -34,7 +34,9 @@ const Home = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(
+      const confirmation = window.confirm("Are you sure you want to delete this user?");
+      if (!confirmation) return;
+      const resp=await axios.delete(
         `http://localhost:8080/api/user/delete-user/${userId}`,
         {
           headers: {
@@ -43,8 +45,16 @@ const Home = () => {
         }
       );
 
-      // Update the user list after delete:
+      if (resp.status === 200) {
+         // Update the user list after delete:
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
+
+        alert(resp.data.message);
+
+      }
+      
+
+     
     } catch (error) {
       console.error("Error deleting user:", error);
     }

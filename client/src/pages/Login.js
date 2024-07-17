@@ -20,6 +20,11 @@ const Login = () => {
     }));
   };
 
+  async function saveTokenToLocalStorage(token){
+    localStorage.setItem("token",token);
+    return;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,9 +36,10 @@ const Login = () => {
 
       console.log("response: ", response.status);
 
+      
+
       if(response.status === 200) {
-        localStorage.setItem("token", response.data.token);
-        alert('Login successful!');
+        await saveTokenToLocalStorage(response.data.token)
         navigate("/home");
       }else{
         alert('Login unsuccessful!');
